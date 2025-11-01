@@ -1,4 +1,4 @@
-package com.kafka.training.kafka.service;
+package com.kafka.training.kafka;
 import com.kafka.training.AppConfigs;
 import com.kafka.training.entity.User;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

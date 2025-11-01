@@ -1,4 +1,4 @@
-package com.kafka.training.kafka.service;
+package com.kafka.training.kafka;
 
 import com.kafka.training.AppConfigs;
 import com.kafka.training.entity.User;
@@ -13,12 +13,13 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class UserProducer {
     private static final String TOPIC = AppConfigs.topicName;
-    private final KafkaTemplate<String, User> kafkaTemplate;
 
+    private KafkaTemplate<String, User> kafkaTemplate;
 
     public UserProducer(KafkaTemplate<String, User> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
+
 
     public CompletableFuture<String> sendUser(@RequestBody User user) {
         CompletableFuture<SendResult<String,User>> future = kafkaTemplate.send(TOPIC,user.getId(),user);
